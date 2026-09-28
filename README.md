@@ -32,14 +32,32 @@ Traditional pre-recorded video courses often leave students feeling stuck, disen
 
 ## 🚀 Getting Started with Google Antigravity
 
-### 1. Open the Repository in Antigravity IDE
+### 1. Setting Up Your Repository: Forking vs. Cloning
 
-1. Clone or open the `Learn_C` folder in **Google Antigravity IDE**:
+To save your notes, code exercises, and PDF builds to GitHub using `/commit` and `/push`, you need write access to the repository.
+
+> [!TIP]
+> **Why Forking is Recommended:**
+> If you directly clone `vishnu-illikkal/Learn_C`, you will not have write permissions to push your commits back to it. By **Forking** the repository first, GitHub creates your personal copy (`https://github.com/<YOUR_USERNAME>/Learn_C.git`) where you have 100% control to commit, tag, and push your progress.
+
+#### Option A (Recommended): Fork & Clone Your Personal Copy
+1. Visit the repository: [https://github.com/vishnu-illikkal/Learn_C](https://github.com/vishnu-illikkal/Learn_C)
+2. Click the **Fork** button (top-right corner) to create a copy under your GitHub account.
+3. Clone **your personal fork** to your local machine:
    ```bash
-   git clone https://github.com/vishnu-illikkal/Learn_C.git
+   git clone https://github.com/<YOUR_GITHUB_USERNAME>/Learn_C.git
    ```
-2. Start chatting with the AI instructor in the Antigravity conversation panel.
-3. Introduce yourself or say **"Hi, I'm ready to learn C"** to begin your personalized course.
+4. Open the cloned folder in **Google Antigravity IDE**.
+5. Start chatting with the AI instructor (e.g., *"Hi, I'm ready to learn C"*).
+
+#### Option B: Direct Clone & Re-Pointing the Remote
+If you already cloned the original repository directly, you can easily point your local repository to your own personal GitHub repo:
+1. Create a new empty repository on GitHub (e.g., `My_Learn_C`).
+2. Update the remote URL in your local terminal:
+   ```bash
+   git remote set-url origin https://github.com/<YOUR_GITHUB_USERNAME>/My_Learn_C.git
+   git push -u origin main --tags
+   ```
 
 ### 2. Mastering Antigravity: The `@` and `/` Shortcuts
 
