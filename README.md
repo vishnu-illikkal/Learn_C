@@ -8,6 +8,18 @@ An interactive, AI-mentored C programming course book and workspace designed to 
 
 This course is built for students who want to master standard C (ISO C99/C11) and low-level memory mechanics before transitioning to embedded systems, microcontroller firmware, and systems engineering.
 
+### Why This Approach Beats Video Courses (Udemy, YouTube, etc.)
+
+Traditional pre-recorded video courses often leave students feeling stuck, disengaged, or overwhelmed. Here is why active AI pair-learning in Antigravity transforms your learning experience:
+
+| Feature | Traditional Video Courses (Udemy / YouTube) | Learn_C in Antigravity |
+| :--- | :--- | :--- |
+| **Learning Pace** | Fixed playlist speed. Skipping causes gaps; rewinding is tedious. | **100% Adaptive to You:** Slow down on tricky pointer math or breeze past concepts you already know. |
+| **Doubt Resolution** | Post on dead Q&A forums or search StackOverflow for hours. | **Instant 1-on-1 Mentorship:** Ask any question, at any depth, as many times as you need. |
+| **Learning Style** | **Passive Watching:** Gives a false sense of understanding until you write code alone. | **Active Pair-Programming:** You code, break, debug, and understand memory mechanically in real time. |
+| **Personalization** | Generic lectures recorded for a broad audience. | **Personalized Feedback:** Explanations adapt to your background and specific embedded systems goals. |
+| **Course Notes & Deliverables** | Messy screenshots, lost bookmarks, or static PDF slides. | **Lifelong LaTeX & PDF Book:** You build your own publication-grade textbook (`notes/main.pdf`) for career reference. |
+
 ### How Learning Works in Antigravity
 
 1. **Adaptive Onboarding:** On first launch, the AI instructor asks for your name, programming background, and goals to personalize your pace and your LaTeX notes book.
@@ -29,17 +41,44 @@ This course is built for students who want to master standard C (ISO C99/C11) an
 2. Start chatting with the AI instructor in the Antigravity conversation panel.
 3. Introduce yourself or say **"Hi, I'm ready to learn C"** to begin your personalized course.
 
-### 2. Useful Slash Commands & Workflows
+### 2. Mastering Antigravity: The `@` and `/` Shortcuts
 
-Type these commands directly in the Antigravity prompt to trigger specialized tasks:
+If you are new to Google Antigravity, two fundamental features power your interaction with the AI instructor:
 
-| Command | Description |
-| :--- | :--- |
-| `/build-pdf-from-latex` | Compiles your LaTeX notes in `notes/` into `notes/main.pdf` via Docker. |
-| `/take-latex-notes` | Summarizes and records the current lesson/doubt into the chapter `.tex` file. |
-| `/commit` | Safely compiles the PDF, stages files, generates a commit message, and tags the release. |
-| `/push` | Pushes all commits and release tags to your GitHub repository. |
-| `/fresher-audit` | Audits a chapter for jargon clarity, tone, and beginner friendliness. |
+#### A. The `@` Symbol (Context & File Mentioning)
+Typing `@` in the chat input opens an interactive autocomplete picker. You do not need to type full directory paths—just typing `@` followed by any part of the filename (e.g., `@chapter01.tex` or `@main.c`) is enough. The autocomplete popup will instantly filter and display the matching files for you to select.
+
+- **When to use it:**
+  - Asking doubts about your code: *"Can you explain what line 12 in `@main.c` is doing?"*
+  - Reviewing notes: *"Can you check if `@chapter01.tex` explains stack frames clearly?"*
+  - Debugging errors: *"I'm getting a compiler error in `@main.c`, here is the terminal output..."*
+
+#### B. The `/` Symbol (Slash Commands & Automated Workflows)
+Typing `/` in the chat brings up automated workflows that run complex tasks (such as building the PDF, updating LaTeX notes, or committing changes to Git) in a single command.
+
+- **Available Slash Commands:**
+
+| Command | Description | Everyday Usage Scenario |
+| :--- | :--- | :--- |
+| `/take-latex-notes` | Formats and saves the current topic or doubt resolution into the active chapter `.tex` file. | Type `/take-latex-notes` whenever you finish discussing a concept and want it recorded in your book. |
+| `/build-pdf-from-latex` | Compiles your LaTeX files in `notes/` into `notes/main.pdf` using the Docker container. | Type `/build-pdf-from-latex` when you want to generate or view your updated study book PDF. |
+| `/commit` | Rebuilds the PDF, stages changes, generates a clean commit message, and tags the version. | Type `/commit` when you finish a study session to save your progress locally. |
+| `/push` | Pushes all local commits and version release tags to your remote GitHub repository. | Type `/push` after `/commit` to sync everything to your remote GitHub repository. |
+| `/fresher-audit` | Analyzes a chapter `.tex` file for beginner-friendliness, jargon clarity, and tone. | Type `/fresher-audit` if you want to verify that a chapter's explanations are intuitive. |
+| `/abbreviations` | Audits a chapter for technical abbreviations and organizes them into a terminology box. | Type `/abbreviations` to compile acronym definitions for the chapter. |
+
+### 3. Full Customization: Editing Skills, Rules & Workflows
+
+Everything in this repository is designed to be fully transparent and customizable:
+
+- **Feel Free to Edit Anything:** You have full ownership of this project. If you spot a flaw, want to tweak the teaching style, or want to customize how LaTeX notes are formatted, you can directly edit any file in `.agents/` or `notes/`.
+- **Modifying Agent Behavior:**
+  - Edit [`.agents/AGENTS.md`](file:///.agents/AGENTS.md) to adjust the instructor's persona, course scope, or check-in rules.
+  - Edit [`.agents/rules/c-best-practices.md`](file:///.agents/rules/c-best-practices.md) to add your own coding standards.
+- **Customizing Skills & Workflows:**
+  - Edit files in [`.agents/skills/`](file:///.agents/skills/) (e.g., `latex-formatter`, `take-latex-notes`) to change LaTeX styling, box environments, or listing formats.
+  - Edit or create markdown files in [`.agents/workflows/`](file:///.agents/workflows/) to add new slash commands tailored to your learning workflow.
+- **Instant Hot-Reload:** Antigravity automatically detects your changes to the `.agents/` folder immediately—no restart required!
 
 ---
 
