@@ -1,0 +1,245 @@
+% --- Common LaTeX Configurations for C Study Notes ---
+
+% --- Core Packages ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{XCharter}
+\usepackage[scaled=0.95]{inconsolata}
+% --- NFSS Font Shape Aliases (Suppresses undefined italic/slanted font warnings for Inconsolata) ---
+\DeclareFontFamily{T1}{zi4}{}
+\DeclareFontShape{T1}{zi4}{m}{it}{<->ssub * zi4/m/n}{}
+\DeclareFontShape{T1}{zi4}{b}{it}{<->ssub * zi4/b/n}{}
+\DeclareFontShape{T1}{zi4}{bx}{it}{<->ssub * zi4/bx/n}{}
+\DeclareFontShape{T1}{zi4}{m}{sl}{<->ssub * zi4/m/n}{}
+\DeclareFontShape{T1}{zi4}{b}{sl}{<->ssub * zi4/b/n}{}
+\DeclareFontShape{T1}{zi4}{bx}{sl}{<->ssub * zi4/bx/n}{}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{tabularx}
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{pifont}
+\usepackage{hyperref}
+\usepackage{xspace}
+\usetikzlibrary{positioning, arrows.meta, shapes.geometric, shadows}
+
+% --- Modern Custom Color Theme ---
+\definecolor{primary}{RGB}{12, 35, 64}      % Deep Royal Navy
+\definecolor{secondary}{RGB}{0, 150, 136}   % Teal / Cyan
+\definecolor{accent}{RGB}{245, 124, 0}      % Deep Amber
+\definecolor{cautionColor}{RGB}{211, 47, 47} % Crimson Red (Errors, xmark)
+\definecolor{mainbg}{HTML}{eee8d5}          % Solarized Base3
+\definecolor{darktext}{RGB}{33, 37, 41}     % Charcoal
+\definecolor{codegreen}{RGB}{46, 125, 50}   % Forest Green
+\definecolor{codeblue}{RGB}{21, 101, 192}   % Royal Blue
+\definecolor{codepurple}{RGB}{142, 36, 170}  % Purple
+\definecolor{backcolour}{RGB}{245, 245, 245}
+
+% --- Symbol & Indicator Macros (LaTeX-Safe Iconography) ---
+\newcommand{\cmark}{\textcolor{codegreen}{\ding{51}}\xspace}
+\newcommand{\xmark}{\textcolor{cautionColor}{\ding{55}}\xspace}
+\newcommand{\staricon}{\textcolor{accent}{\ding{72}}\xspace}
+\newcommand{\arrowicon}{\textcolor{codeblue}{\ding{220}}\xspace}
+\newcommand{\handpoint}{\textcolor{secondary}{\ding{43}}\xspace}
+
+% --- C Code Listing Styling ---
+\lstdefinestyle{cstyle}{
+    language=C,
+    backgroundcolor=\color{backcolour},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=8pt,
+    numberstyle=\tiny\color{gray},
+    xleftmargin=1.8em,
+    framexleftmargin=1.8em,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+    frame=single,
+    rulecolor=\color{primary!30},
+    columns=flexible,
+    keywordstyle=\color{codeblue}\bfseries,
+    ndkeywords={uint8_t, uint16_t, uint32_t, uint64_t, int8_t, int16_t, int32_t, int64_t, size_t, ssize_t, uintptr_t, intptr_t, ptrdiff_t, bool, true, false, NULL},
+    ndkeywordstyle=\color{secondary}\bfseries,
+    commentstyle=\color{codegreen}\itshape,
+    stringstyle=\color{accent},
+    directivestyle=\color{codepurple}\bfseries,
+    escapeinside={(*@}{@*)}
+}
+
+\lstset{style=cstyle}
+
+% --- Dedicated Questions & Doubts Clarification Box ---
+\tcbuselibrary{skins, breakable}
+\newtcolorbox{doubtbox}[2][]{
+    enhanced,
+    breakable,
+    colback=white,
+    colframe=primary,
+    colbacktitle=primary,
+    coltitle=white,
+    fonttitle=\bfseries\raggedright,
+    title={Q: #2},
+    arc=4pt,
+    boxrule=1pt,
+    top=8pt,
+    bottom=8pt,
+    left=12pt,
+    right=12pt,
+    before skip=12pt,
+    after skip=12pt,
+    #1
+}
+
+% --- Callout Box Environments ---
+\definecolor{cautionColor}{RGB}{211, 47, 47}    % Dark Red
+\definecolor{tipColor}{RGB}{0, 121, 107}        % Deep Teal
+\definecolor{importantColor}{RGB}{230, 81, 0}   % Deep Orange
+
+\newtcolorbox{cautionBox}[2][]{
+    enhanced,
+    breakable,
+    colback=white,
+    colframe=cautionColor,
+    colbacktitle=cautionColor,
+    coltitle=white,
+    fonttitle=\bfseries\raggedright,
+    title={Caution: #2},
+    arc=4pt,
+    boxrule=1pt,
+    top=8pt,
+    bottom=8pt,
+    left=12pt,
+    right=12pt,
+    before skip=12pt,
+    after skip=12pt,
+    #1
+}
+
+\newtcolorbox{tipBox}[2][]{
+    enhanced,
+    breakable,
+    colback=white,
+    colframe=tipColor,
+    colbacktitle=tipColor,
+    coltitle=white,
+    fonttitle=\bfseries\raggedright,
+    title={Tip: #2},
+    arc=4pt,
+    boxrule=1pt,
+    top=8pt,
+    bottom=8pt,
+    left=12pt,
+    right=12pt,
+    before skip=12pt,
+    after skip=12pt,
+    #1
+}
+
+\newtcolorbox{importantBox}[2][]{
+    enhanced,
+    breakable,
+    colback=white,
+    colframe=importantColor,
+    colbacktitle=importantColor,
+    coltitle=white,
+    fonttitle=\bfseries\raggedright,
+    title={Important: #2},
+    arc=4pt,
+    boxrule=1pt,
+    top=8pt,
+    bottom=8pt,
+    left=12pt,
+    right=12pt,
+    before skip=12pt,
+    after skip=12pt,
+    #1
+}
+
+% --- Dedicated Terminology & Vocabulary Box ---
+\definecolor{termColor}{RGB}{103, 58, 183}       % Deep Purple / Indigo
+
+\newtcolorbox{terminologyBox}[2][]{
+    enhanced,
+    breakable,
+    colback=white,
+    colframe=termColor,
+    colbacktitle=termColor,
+    coltitle=white,
+    fonttitle=\bfseries\raggedright,
+    title={Terminology: #2},
+    arc=4pt,
+    boxrule=1pt,
+    top=8pt,
+    bottom=8pt,
+    left=12pt,
+    right=12pt,
+    before skip=12pt,
+    after skip=12pt,
+    #1
+}
+
+% --- Dedicated Roadmap & Downstream References Box ---
+\definecolor{roadmapColor}{RGB}{21, 101, 192}    % Royal Blue
+\newtcolorbox{roadmapBox}[2][]{
+    enhanced,
+    breakable,
+    colback=white,
+    colframe=roadmapColor,
+    colbacktitle=roadmapColor,
+    coltitle=white,
+    fonttitle=\bfseries\raggedright,
+    title={Roadmap: #2},
+    arc=4pt,
+    boxrule=1pt,
+    top=8pt,
+    bottom=8pt,
+    left=12pt,
+    right=12pt,
+    before skip=12pt,
+    after skip=12pt,
+    #1
+}
+
+% --- Dedicated Headless Quote / Guiding Question Box ---
+\newtcolorbox{quoteBox}[1][]{
+    enhanced,
+    breakable,
+    colback=primary!3,
+    colframe=primary,
+    arc=4pt,
+    boxrule=1pt,
+    leftrule=3.5pt,
+    top=8pt,
+    bottom=8pt,
+    left=12pt,
+    right=12pt,
+    before skip=10pt,
+    after skip=10pt,
+    #1
+}
+
+% --- Dynamic Chapter & Section Cross-Referencing Macros ---
+\newcommand{\chapref}[1]{\hyperref[#1]{\textbf{Chapter~\ref{#1} (\nameref{#1})}}}
+\newcommand{\secref}[1]{\hyperref[#1]{\textbf{Section~\ref{#1} (\nameref{#1})}}}
+
+% --- Table of Contents (TOC) Spacing for Multi-Digit Chapters, Sections & Page Numbers ---
+\makeatletter
+% 1. Increase page number box width and right margin
+\renewcommand\@pnumwidth{2.5em}
+\renewcommand\@tocrmarg{3.8em}
+
+% 2. Increase reserved number width for multi-digit sections
+\renewcommand*\l@section{\@dottedtocline{1}{1.5em}{3.2em}}
+\renewcommand*\l@subsection{\@dottedtocline{2}{4.7em}{4.0em}}
+\renewcommand*\l@subsubsection{\@dottedtocline{3}{8.7em}{4.8em}}
+\makeatother

@@ -1,0 +1,22 @@
+# LaTeX intermediate build files
+notes/*.aux
+notes/*.log
+notes/*.out
+notes/*.toc
+notes/*.fls
+notes/*.fdb_latexmk
+notes/*.synctex.gz
+notes/*.synctex(busy)
+
+# C Build artifacts
+code/**/bin/
+code/**/obj/
+code/**/*.o
+code/**/*.out
+code/**/*.exe
+
+# VS Code / IDE
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json

@@ -1,0 +1,127 @@
+\documentclass[11pt,a4paper,oneside]{book}
+
+% --- Preamble ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{XCharter}
+\usepackage[scaled=0.95]{inconsolata}
+\usepackage{microtype} % Improves character spacing and appearance
+\usepackage{geometry}
+\geometry{a4paper, margin=1in, headheight=36pt}
+\usepackage{graphicx}
+\usepackage[table]{xcolor}
+\definecolor{pagebackground}{HTML}{eee8d5}
+\pagecolor{pagebackground}
+\usepackage{listings}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+    pdftitle={Foundations of C Programming: Zero to Hero Study Notes},
+}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage[skins,breakable]{tcolorbox}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xspace} % Adds smart spacing after macros
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta, shapes.geometric, shadows, decorations.pathreplacing}
+\usepackage{fancyhdr}
+\usepackage{etoolbox}
+\usepackage{parskip} % Adds vertical space between paragraphs and removes indentation
+\usepackage{multirow} % Supporting multi-row table cells
+\usepackage{tabularx} % Auto-wrapping table columns to fit line width
+
+% --- Version Configuration ---
+\IfFileExists{version.tex}{\input{version.tex}}{\IfFileExists{notes/version.tex}{\input{notes/version.tex}}{\newcommand{\gitversion}{v0.1.0-dev}}}
+
+% --- Page Style and Numbering (fancyhdr) ---
+\pagestyle{fancy}
+\fancyhf{} % Clear all headers and footers
+
+% Custom Marks for Mixed Case (prevents default harsh all-caps)
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
+
+% Header Configuration (2-line layout: Chapter left, Section right on separate lines)
+\fancyhead[L]{\parbox[b]{\headwidth}{%
+    \raggedright\small\textcolor{gray!80}{\leftmark}\\[2pt]%
+    \raggedleft\small\textcolor{gray!80}{\rightmark}%
+}}
+\fancyhead[R]{}
+\renewcommand{\headrulewidth}{0.5pt} % A subtle divider line
+\renewcommand{\headrule}{{\hbox to\headwidth{\color{gray!30}\leaders\hrule height \headrulewidth\hfill}}}
+
+% --- Student / Author Name Configuration ---
+\newcommand{\authorname}{Student}
+
+% Footer Configuration
+\fancyfoot[L]{\small \thepage}
+\fancyfoot[C]{\small \textcolor{gray}{C Programming Notes}}
+\fancyfoot[R]{\small \textcolor{gray}{\authorname{} \textbar{} \gitversion}}
+
+% Ensure 'plain' style (chapter starts, etc.) matches the fancy footer but has no header
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyfoot[L]{\small \thepage}
+    \fancyfoot[C]{\small \textcolor{gray}{C Programming Notes}}
+    \fancyfoot[R]{\small \textcolor{gray}{\authorname{} \textbar{} \gitversion}}
+    \renewcommand{\headrulewidth}{0pt}
+}
+
+% Force page numbers (and footer) on Part divider pages
+\makeatletter
+\renewcommand\part{%
+  \if@openright
+    \cleardoublepage
+  \else
+    \clearpage
+  \fi
+  \thispagestyle{plain}% Standard is 'empty', now uses our custom plain style
+  \if@twocolumn
+    \onecolumn
+    \@tempswatrue
+  \else
+    \@tempswafalse
+  \fi
+  \null\vfil
+  \secdef\@part\@spart}
+\makeatother
+
+% --- Custom Macros ---
+\input{macros.tex}
+
+% --- Document Formatting ---
+\setcounter{secnumdepth}{3} % Number sections down to subsubsections (e.g. 1.6.4.1)
+\setcounter{tocdepth}{3}    % Include subsubsections in Table of Contents
+\title{Foundations of C Programming: Zero to Hero Study Notes}
+\author{\authorname}
+\date{\today}
+
+\begin{document}
+
+\frontmatter
+\maketitle
+\tableofcontents
+
+\mainmatter
+
+% --- Chapters ---
+\input{chapters/chapter01.tex}
+
+\backmatter
+\chapter{References and Further Reading}
+\begin{itemize}
+    \item \textbf{Brian W. Kernighan \& Dennis M. Ritchie}, \textit{The C Programming Language}, 2nd Edition, Prentice Hall, 1988.
+    \item \textbf{K. N. King}, \textit{C Programming: A Modern Approach}, 2nd Edition, W. W. Norton \& Company, 2008.
+    \item \textbf{Jens Gustedt}, \textit{Modern C}, Manning Publications, 2019.
+    \item \textbf{ISO/IEC 9899:1999 (C99) / ISO/IEC 9899:2011 (C11)}, \textit{Information Technology --- Programming Languages --- C}.
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,5 @@
+
+
+docker rm -f latex-compiler 2>$null; docker run --name latex-compiler --rm -v "${PWD}/notes:/workdir" -w /workdir texlive/texlive pdflatex -interaction=nonstopmode main.tex
+
+
